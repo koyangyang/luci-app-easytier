@@ -55,10 +55,10 @@ endef
 define Build/Compile
 endef
 
-define Package/$(PKG_NAME)/install --features full
+define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/easytier-core $(1)/usr/bin/easytier-core
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/easytier-cli $(1)/usr/bin/easytier-cli
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/easytier-core --features full $(1)/usr/bin/easytier-core
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/easytier-cli --features full $(1)/usr/bin/easytier-cli
 	[ "$(APP_ARCH)" != "mips" ] && [ "$(APP_ARCH)" != "mipsel" ] && $(INSTALL_BIN) $(PKG_BUILD_DIR)/easytier-web $(1)/usr/bin/easytier-web || true
 endef
 
